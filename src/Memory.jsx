@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./App.css";
+import "./Memory.css";
 import { useEffect } from "react";
 
 function Memory() {
@@ -9,6 +9,7 @@ function Memory() {
     const [pokemonFullArray, setPokemonFullArray] = useState([]);
     const [score, setScore] = useState(0);
     const [highScore, setHighScore] = useState(0);
+    const [firstShuffle, setFirstShuffle] = useState(true);
 
     // Fetch initial Pokemon list
     const fetchPokemon = async () => {
@@ -49,6 +50,7 @@ function Memory() {
     }, [pokemonData]);
 
     function shufflePokemon(num) {
+        
         let array = [...pokemonFinal];
         let currPokemon = array[num].name;
         if (pokemonFullArray.includes(currPokemon)) {
@@ -70,10 +72,21 @@ function Memory() {
         setPokemonFinal(array);
     }
 
+    useEffect(() => {
+        if (firstShuffle ===  true && pokemonFinal.length === 12 ) {
+            shufflePokemon(0);
+            setFirstShuffle(false);
+        }
+    }, [firstShuffle, pokemonFinal]);
+
     return (
         <>
             {pokemonFinal.length > 0 && (
                 <div className="container">
+                    <div className="top">
+                        <h1>Memory Game</h1>
+                        <p>Select the cards you haven't already pressed</p>
+                    </div>
                     <div className="div-scores">
                         <div className="div-normal-score">
                             <p>Current Score: {score}</p>
@@ -82,107 +95,139 @@ function Memory() {
                             <p>High Score: {highScore}</p>
                         </div>
                     </div>
-                    <div className="div-card" onClick={() => shufflePokemon(0)}>
-                        <div className="div-img">
-                            <img src={pokemonFinal[0].image} alt="" />
+                    <div className="card-container">
+                        <div
+                            className="div-card"
+                            onClick={() => shufflePokemon(0)}
+                        >
+                            <div className="div-img">
+                                <img src={pokemonFinal[0].image} alt="" />
+                            </div>
+                            <div className="div-text">
+                                <h1>{pokemonFinal[0].name}</h1>
+                            </div>
                         </div>
-                        <div className="div-text">
-                            <h1>{pokemonFinal[0].name}</h1>
+                        <div
+                            className="div-card"
+                            onClick={() => shufflePokemon(1)}
+                        >
+                            <div className="div-img">
+                                <img src={pokemonFinal[1].image} alt="" />
+                            </div>
+                            <div className="div-text">
+                                <h1>{pokemonFinal[1].name}</h1>
+                            </div>
                         </div>
-                    </div>
-                    <div className="div-card" onClick={() => shufflePokemon(1)}>
-                        <div className="div-img">
-                            <img src={pokemonFinal[1].image} alt="" />
+                        <div
+                            className="div-card"
+                            onClick={() => shufflePokemon(2)}
+                        >
+                            <div className="div-img">
+                                <img src={pokemonFinal[2].image} alt="" />
+                            </div>
+                            <div className="div-text">
+                                <h1>{pokemonFinal[2].name}</h1>
+                            </div>
                         </div>
-                        <div className="div-text">
-                            <h1>{pokemonFinal[1].name}</h1>
+                        <div
+                            className="div-card"
+                            onClick={() => shufflePokemon(3)}
+                        >
+                            <div className="div-img">
+                                <img src={pokemonFinal[3].image} alt="" />
+                            </div>
+                            <div className="div-text">
+                                <h1>{pokemonFinal[3].name}</h1>
+                            </div>
                         </div>
-                    </div>
-                    <div className="div-card" onClick={() => shufflePokemon(2)}>
-                        <div className="div-img">
-                            <img src={pokemonFinal[2].image} alt="" />
+                        <div
+                            className="div-card"
+                            onClick={() => shufflePokemon(4)}
+                        >
+                            <div className="div-img">
+                                <img src={pokemonFinal[4].image} alt="" />
+                            </div>
+                            <div className="div-text">
+                                <h1>{pokemonFinal[4].name}</h1>
+                            </div>
                         </div>
-                        <div className="div-text">
-                            <h1>{pokemonFinal[2].name}</h1>
+                        <div
+                            className="div-card"
+                            onClick={() => shufflePokemon(5)}
+                        >
+                            <div className="div-img">
+                                <img src={pokemonFinal[5].image} alt="" />
+                            </div>
+                            <div className="div-text">
+                                <h1>{pokemonFinal[5].name}</h1>
+                            </div>
                         </div>
-                    </div>
-                    <div className="div-card" onClick={() => shufflePokemon(3)}>
-                        <div className="div-img">
-                            <img src={pokemonFinal[3].image} alt="" />
+                        <div
+                            className="div-card"
+                            onClick={() => shufflePokemon(6)}
+                        >
+                            <div className="div-img">
+                                <img src={pokemonFinal[6].image} alt="" />
+                            </div>
+                            <div className="div-text">
+                                <h1>{pokemonFinal[6].name}</h1>
+                            </div>
                         </div>
-                        <div className="div-text">
-                            <h1>{pokemonFinal[3].name}</h1>
+                        <div
+                            className="div-card"
+                            onClick={() => shufflePokemon(7)}
+                        >
+                            <div className="div-img">
+                                <img src={pokemonFinal[7].image} alt="" />
+                            </div>
+                            <div className="div-text">
+                                <h1>{pokemonFinal[7].name}</h1>
+                            </div>
                         </div>
-                    </div>
-                    <div className="div-card" onClick={() => shufflePokemon(4)}>
-                        <div className="div-img">
-                            <img src={pokemonFinal[4].image} alt="" />
+                        <div
+                            className="div-card"
+                            onClick={() => shufflePokemon(8)}
+                        >
+                            <div className="div-img">
+                                <img src={pokemonFinal[8].image} alt="" />
+                            </div>
+                            <div className="div-text">
+                                <h1>{pokemonFinal[8].name}</h1>
+                            </div>
                         </div>
-                        <div className="div-text">
-                            <h1>{pokemonFinal[4].name}</h1>
-                        </div>
-                    </div>
-                    <div className="div-card" onClick={() => shufflePokemon(5)}>
-                        <div className="div-img">
-                            <img src={pokemonFinal[5].image} alt="" />
-                        </div>
-                        <div className="div-text">
-                            <h1>{pokemonFinal[5].name}</h1>
-                        </div>
-                    </div>
-                    <div className="div-card" onClick={() => shufflePokemon(6)}>
-                        <div className="div-img">
-                            <img src={pokemonFinal[6].image} alt="" />
-                        </div>
-                        <div className="div-text">
-                            <h1>{pokemonFinal[6].name}</h1>
-                        </div>
-                    </div>
-                    <div className="div-card" onClick={() => shufflePokemon(7)}>
-                        <div className="div-img">
-                            <img src={pokemonFinal[7].image} alt="" />
-                        </div>
-                        <div className="div-text">
-                            <h1>{pokemonFinal[7].name}</h1>
-                        </div>
-                    </div>
-                    <div className="div-card" onClick={() => shufflePokemon(8)}>
-                        <div className="div-img">
-                            <img src={pokemonFinal[8].image} alt="" />
-                        </div>
-                        <div className="div-text">
-                            <h1>{pokemonFinal[8].name}</h1>
-                        </div>
-                    </div>
 
-                    <div className="div-card" onClick={() => shufflePokemon(9)}>
-                        <div className="div-img">
-                            <img src={pokemonFinal[9].image} alt="" />
+                        <div
+                            className="div-card"
+                            onClick={() => shufflePokemon(9)}
+                        >
+                            <div className="div-img">
+                                <img src={pokemonFinal[9].image} alt="" />
+                            </div>
+                            <div className="div-text">
+                                <h1>{pokemonFinal[9].name}</h1>
+                            </div>
                         </div>
-                        <div className="div-text">
-                            <h1>{pokemonFinal[9].name}</h1>
+                        <div
+                            className="div-card"
+                            onClick={() => shufflePokemon(10)}
+                        >
+                            <div className="div-img">
+                                <img src={pokemonFinal[10].image} alt="" />
+                            </div>
+                            <div className="div-text">
+                                <h1>{pokemonFinal[10].name}</h1>
+                            </div>
                         </div>
-                    </div>
-                    <div
-                        className="div-card"
-                        onClick={() => shufflePokemon(10)}
-                    >
-                        <div className="div-img">
-                            <img src={pokemonFinal[10].image} alt="" />
-                        </div>
-                        <div className="div-text">
-                            <h1>{pokemonFinal[10].name}</h1>
-                        </div>
-                    </div>
-                    <div
-                        className="div-card"
-                        onClick={() => shufflePokemon(11)}
-                    >
-                        <div className="div-img">
-                            <img src={pokemonFinal[11].image} alt="" />
-                        </div>
-                        <div className="div-text">
-                            <h1>{pokemonFinal[11].name}</h1>
+                        <div
+                            className="div-card"
+                            onClick={() => shufflePokemon(11)}
+                        >
+                            <div className="div-img">
+                                <img src={pokemonFinal[11].image} alt="" />
+                            </div>
+                            <div className="div-text">
+                                <h1>{pokemonFinal[11].name}</h1>
+                            </div>
                         </div>
                     </div>
                 </div>

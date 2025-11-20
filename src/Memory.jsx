@@ -50,7 +50,6 @@ function Memory() {
     }, [pokemonData]);
 
     function shufflePokemon(num) {
-        
         let array = [...pokemonFinal];
         let currPokemon = array[num].name;
         if (pokemonFullArray.includes(currPokemon)) {
@@ -73,9 +72,10 @@ function Memory() {
     }
 
     useEffect(() => {
-        if (firstShuffle ===  true && pokemonFinal.length === 12 ) {
+        if (firstShuffle === true && pokemonFinal.length === 12) {
             shufflePokemon(0);
             setFirstShuffle(false);
+            setScore(0);
         }
     }, [firstShuffle, pokemonFinal]);
 

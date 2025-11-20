@@ -1,11 +1,8 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import { useEffect } from "react";
 
 function Memory() {
-    const [count, setCount] = useState(0);
     const [pokemonData, setPokemonData] = useState([]);
     const [pokemonFinal, setPokemonFinal] = useState([]);
 
@@ -47,35 +44,118 @@ function Memory() {
         }
     }, [pokemonData]);
 
-    useEffect(() => {
-        console.log("Updated pokemonFinal:", pokemonFinal);
-    }, [pokemonFinal]);
+    const shufflePokemon = () => {
+        let array = [...pokemonFinal];
+        for (let i = array.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        setPokemonFinal(array);
+    };
+
     return (
         <>
-            <div>
-                <a href="https://vite.dev" target="_blank">
-                    <img src={viteLogo} className="logo" alt="Vite logo" />
-                </a>
-                <a href="https://react.dev" target="_blank">
-                    <img
-                        src={reactLogo}
-                        className="logo react"
-                        alt="React logo"
-                    />
-                </a>
-            </div>
-            <h1>Vite + diddy</h1>
-            <div className="card">
-                <button onClick={() => setCount((count) => count + 1)}>
-                    count is {count}
-                </button>
-                <p>
-                    Edit <code>src/App.jsx</code> and save to test HMR
-                </p>
-            </div>
-            <p className="read-the-docs">
-                Click on the Vite and React logos to learn more
-            </p>
+            {pokemonFinal.length > 0 && (
+                <div id="container">
+                    <div id="div-card" onClick={shufflePokemon}>
+                        <div id="div-img">
+                            <img src={pokemonFinal[0].image} alt="" />
+                        </div>
+                        <div id="div-text">
+                            <h1>{pokemonFinal[0].name}</h1>
+                        </div>
+                    </div>
+                    <div id="div-card" onClick={shufflePokemon}>
+                        <div id="div-img">
+                            <img src={pokemonFinal[1].image} alt="" />
+                        </div>
+                        <div id="div-text">
+                            <h1>{pokemonFinal[1].name}</h1>
+                        </div>
+                    </div>
+                    <div id="div-card" onClick={shufflePokemon}>
+                        <div id="div-img">
+                            <img src={pokemonFinal[2].image} alt="" />
+                        </div>
+                        <div id="div-text">
+                            <h1>{pokemonFinal[2].name}</h1>
+                        </div>
+                    </div>
+                    <div id="div-card" onClick={shufflePokemon}>
+                        <div id="div-img">
+                            <img src={pokemonFinal[3].image} alt="" />
+                        </div>
+                        <div id="div-text">
+                            <h1>{pokemonFinal[3].name}</h1>
+                        </div>
+                    </div>
+                    <div id="div-card" onClick={shufflePokemon}>
+                        <div id="div-img">
+                            <img src={pokemonFinal[4].image} alt="" />
+                        </div>
+                        <div id="div-text">
+                            <h1>{pokemonFinal[4].name}</h1>
+                        </div>
+                    </div>
+                    <div id="div-card" onClick={shufflePokemon}>
+                        <div id="div-img">
+                            <img src={pokemonFinal[5].image} alt="" />
+                        </div>
+                        <div id="div-text">
+                            <h1>{pokemonFinal[5].name}</h1>
+                        </div>
+                    </div>
+                    <div id="div-card" onClick={shufflePokemon}>
+                        <div id="div-img">
+                            <img src={pokemonFinal[6].image} alt="" />
+                        </div>
+                        <div id="div-text">
+                            <h1>{pokemonFinal[6].name}</h1>
+                        </div>
+                    </div>
+                    <div id="div-card" onClick={shufflePokemon}>
+                        <div id="div-img">
+                            <img src={pokemonFinal[7].image} alt="" />
+                        </div>
+                        <div id="div-text">
+                            <h1>{pokemonFinal[7].name}</h1>
+                        </div>
+                    </div>
+                    <div id="div-card" onClick={shufflePokemon}>
+                        <div id="div-img">
+                            <img src={pokemonFinal[8].image} alt="" />
+                        </div>
+                        <div id="div-text">
+                            <h1>{pokemonFinal[8].name}</h1>
+                        </div>
+                    </div>
+
+                    <div id="div-card" onClick={shufflePokemon}>
+                        <div id="div-img">
+                            <img src={pokemonFinal[9].image} alt="" />
+                        </div>
+                        <div id="div-text">
+                            <h1>{pokemonFinal[9].name}</h1>
+                        </div>
+                    </div>
+                    <div id="div-card" onClick={shufflePokemon}>
+                        <div id="div-img">
+                            <img src={pokemonFinal[10].image} alt="" />
+                        </div>
+                        <div id="div-text">
+                            <h1>{pokemonFinal[10].name}</h1>
+                        </div>
+                    </div>
+                    <div id="div-card" onClick={shufflePokemon}>
+                        <div id="div-img">
+                            <img src={pokemonFinal[11].image} alt="" />
+                        </div>
+                        <div id="div-text">
+                            <h1>{pokemonFinal[11].name}</h1>
+                        </div>
+                    </div>
+                </div>
+            )}
         </>
     );
 }

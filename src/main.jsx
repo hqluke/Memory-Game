@@ -4,7 +4,7 @@ import './index.css'
 import Memory from './Memory.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+    <StrictMode>
     <Memory />
   </StrictMode>,
 )
